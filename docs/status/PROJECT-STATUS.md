@@ -71,11 +71,11 @@ bash scripts/check-seo-manifest.sh        # 메타 · sitemap · OG
 
 상세 변경 증거는 `docs/daily/05-31/`와 `docs/status/DECISION-LOG.md`를 우선 확인한다. 이 섹션은 다음 작업자가 흐름만 잡을 수 있도록 5개 이내로 유지한다.
 
+- 2026-05-31 FAQ 로봇 자산 교체: Imagen 기반 FAQ 전용 로봇 PNG 생성·투명화·512/256 리사이징, 기본 기호 아이콘 제거/대체, FAQ 화면 smoke 확인.
 - 2026-05-31 브랜드 깊이감 배경 실험: subtle blueprint grid, hero/CTA band depth, 가격·문의·후기·사례 premium-card 표면 적용.
 - 2026-05-31 Vercel 배포 준비: `/kit` production 404, 기본 OG endpoint 추가, sitemap/robots/check-seo 실라우트 기준 정렬, hydration smoke 통과.
 - 2026-05-31 문서관리 얇게 정리: 상태판 3종과 Architecture/Map/Plan을 현재 코드 기준으로 정렬.
 - 2026-05-31 가격 페이지 비교 중심 재구성: 상단 중복 문구 제거, `<PricingQuickCompare>` 추가, 금기 SEO 보장 표현 보정.
-- 2026-05-31 홈 스토리보드 하단 겹침 보정: 숫자/PNG/카드/레일 간격 조정, console error 0건 확인.
 
 ---
 

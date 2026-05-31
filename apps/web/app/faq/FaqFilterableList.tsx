@@ -104,12 +104,13 @@ function AiAssistTeaser({ aiAssist }: { aiAssist: NonNullable<FaqPage['aiAssist'
             disabled
             placeholder={aiAssist.placeholder}
             aria-label="AI 챗 도우미 — 사전 알림 신청 필요"
-            className="text-body text-muted placeholder:text-muted/80 disabled:cursor-not-allowed flex-1 bg-transparent outline-none"
+            className="text-body text-muted placeholder:text-muted/80 min-w-0 flex-1 bg-transparent outline-none disabled:cursor-not-allowed"
           />
           <ComingSoonChip
             label={aiAssist.comingSoon.label ?? '곧 등장'}
             description={aiAssist.comingSoon.description}
             href={aiAssist.comingSoon.href}
+            className="max-w-full flex-wrap justify-center whitespace-normal rounded-2xl text-center leading-relaxed md:justify-start md:text-left"
           />
         </label>
       </div>
@@ -132,7 +133,7 @@ function SearchInput({
         onChange={(e) => onChange(e.target.value)}
         placeholder="질문·답변 본문 검색"
         aria-label="FAQ 검색"
-        className="text-body text-text placeholder:text-muted/70 flex-1 bg-transparent outline-none"
+        className="text-body text-text placeholder:text-muted/70 min-w-0 flex-1 bg-transparent outline-none"
       />
       {value ? (
         <button

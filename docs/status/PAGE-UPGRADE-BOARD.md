@@ -24,7 +24,7 @@
 | `/blog/[slug]`     | 블로그 글         | Ready    | —      | —      | —             | MDX                                                         |
 | `/notice`          | 공지 리스트       | QA       | claude | 폐기   | PageHero      | JSON SSOT + pinned/all 리스트 · SSG ✅ 2026-05-30           |
 | `/notice/[slug]`   | 공지 상세         | Ready    | —      | —      | —             | MD                                                          |
-| `/faq`             | FAQ               | QA       | claude | 폐기   | PageHero      | JSON SSOT + 필터 아코디언 · SSG ✅ 2026-05-30               |
+| `/faq`             | FAQ               | QA       | claude | 폐기   | PageHero      | JSON SSOT + 필터 아코디언 · SSG ✅ 2026-05-30 · FAQ 전용 Imagen 로봇 PNG 교체 ✅ 2026-05-31 |
 | `/reservation`     | 예약              | Ready    | —      | 폐기   | —             | 라우트 파일 없음 · 날짜/시간/직접입력 예정 |
 | `/contact`         | 문의              | QA       | claude | 폐기   | PageHero      | `/contact/form` 자체 폼 CTA 노출 · 네이버 폼 폐기 · SSG ✅ 2026-05-31 (DEC-058) |
 | `/contact/form`    | 진단 폼 멀티스텝  | QA       | claude | 폐기   | PageHero      | 15문항 5스텝 + Progress + localStorage draft + Resend POST · zod 콘텐츠/제출 분리 · honeypot · SSG ✅ 2026-05-31 (DEC-058) |

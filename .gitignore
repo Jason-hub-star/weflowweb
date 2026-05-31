@@ -55,3 +55,6 @@ docs/daily/*/evidence/
 
 # Playwright MCP 임시 캡처 (디버깅용, repo에 포함 X)
 .playwright-mcp/
+
+# 임시 디버깅 스크린샷·파일
+tmp/

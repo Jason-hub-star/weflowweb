@@ -122,7 +122,7 @@ apps/web/
 └── public/
     ├── logo/
     ├── assets/
-    └── mascot/
+    └── mascot/                 # Flow Guide + FAQ 전용 Imagen robot helper PNG
 ```
 
 ---
