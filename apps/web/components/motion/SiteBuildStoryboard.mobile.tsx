@@ -78,8 +78,7 @@ export function SiteBuildStoryboardMobile({ data }: { data: ProcessData }) {
               className="absolute left-1/2 top-1/2 w-[25%] -translate-x-1/2 -translate-y-1/2 select-none drop-shadow-lg"
               draggable={false}
             />
-            <ActiveStepBadge activeIdx={activeIdx} total={total} />
-          </div>
+              </div>
         </div>
 
         <div className="mt-12">
@@ -136,19 +135,6 @@ export function SiteBuildStoryboardMobile({ data }: { data: ProcessData }) {
   );
 }
 
-function ActiveStepBadge({ activeIdx, total }: { activeIdx: number; total: number }) {
-  return (
-    <div className="pointer-events-none absolute -bottom-6 left-1/2 -translate-x-1/2">
-      <div className="bg-surface border-line grid h-16 w-16 place-items-center rounded-full border shadow-md">
-        <span className="text-eyebrow text-muted font-mono">STEP</span>
-        <span className="text-h2 text-accent-strong font-mono font-bold tabular-nums leading-none">
-          {String(activeIdx + 1).padStart(2, '0')}
-        </span>
-        <span className="text-muted text-[0.65rem]">/{String(total).padStart(2, '0')}</span>
-      </div>
-    </div>
-  );
-}
 
 function StepCard({ item, isActive }: { item: ProcessData['items'][number]; isActive: boolean }) {
   return (

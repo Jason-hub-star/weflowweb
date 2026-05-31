@@ -10,7 +10,7 @@ import { useEffect, useRef, type ReactNode } from 'react';
  * - 우측 하단 영상 워터마크(Gemini Veo 등) 자리 from-bg/80 그라데이션 (하·우)
  *   + 마스코트 슬롯이 워터마크 위에 절대 위치로 가림
  * - autoPlay · muted · playsInline (iOS 호환)
- * - **첫 사이클 1~end 재생 (도입부 1초 스킵) → 끝나면 부드러운 페이드 직후 4초 지점으로 점프해서 재재생 → 무한 반복**
+ * - **첫 사이클 1.5~end 재생 (도입부 1.5초 스킵) → 끝나면 부드러운 페이드 직후 4초 지점으로 점프해서 재재생 → 무한 반복**
  *   페이드 트랜지션(220ms)이 점프 컷을 가려서 자연스럽게 이어짐. 모든 브라우저 안정 동작.
  * - aria-hidden (장식 영상)
  * - 영상 src 비어있으면 poster 또는 그라데이션 placeholder fallback
@@ -41,8 +41,8 @@ export function HeroVideo({
   useEffect(() => {
     const v = videoRef.current;
     if (!v) return;
-    // 첫 사이클 시작 지점 (영상 도입부 1초 스킵)
-    const START_AT_SECONDS = 1;
+    // 첫 사이클 시작 지점 (영상 도입부 1.5초 스킵)
+    const START_AT_SECONDS = 1.5;
     // 정재생이 끝나면 이 지점으로 점프해서 다시 정재생
     const REPLAY_FROM_SECONDS = 4;
     const FADE_MS = 220;

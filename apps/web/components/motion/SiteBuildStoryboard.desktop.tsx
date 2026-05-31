@@ -107,8 +107,6 @@ function ActiveStageCard({ item }: { item: ProcessItem }) {
 
 function ProgressTrack({
   progressScale,
-  activeIdx,
-  total,
 }: {
   progressScale: MotionValue<number>;
   activeIdx: number;
@@ -121,22 +119,6 @@ function ProgressTrack({
           style={{ scaleX: progressScale, transformOrigin: '0% 50%' }}
           className="bg-accent-strong absolute inset-y-0 left-0 w-full rounded-full"
         />
-      </div>
-      <div className="mt-4 flex items-center justify-between">
-        {Array.from({ length: total }).map((_, i) => (
-          <span
-            key={i}
-            className={
-              i === activeIdx
-                ? 'bg-accent-strong text-bg grid h-8 w-8 place-items-center rounded-full font-mono text-[0.72rem] font-bold shadow-md transition-all'
-                : i < activeIdx
-                  ? 'bg-accent-soft text-accent-strong grid h-7 w-7 place-items-center rounded-full font-mono text-[0.68rem] font-bold transition-all'
-                  : 'bg-surface text-muted border-line grid h-7 w-7 place-items-center rounded-full border font-mono text-[0.68rem] transition-all'
-            }
-          >
-            {String(i + 1).padStart(2, '0')}
-          </span>
-        ))}
       </div>
     </div>
   );
