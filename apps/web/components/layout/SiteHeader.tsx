@@ -29,16 +29,16 @@ export function SiteHeader() {
         className="sticky top-0 z-40 bg-bg/85 backdrop-blur transition-shadow data-[scrolled=true]:border-b data-[scrolled=true]:border-line data-[scrolled=true]:shadow-sm supports-[backdrop-filter]:bg-bg/70"
       >
         <div className="mx-auto flex max-w-7xl items-center justify-between gap-6 px-[var(--space-gutter)] py-3">
-          <Link href="/" className="flex items-center gap-2.5">
+          <Link href="/" className="flex items-center gap-3">
             <Image
               src="/logo/weflow-logo_icon.png"
               alt={config.brand.name}
-              width={40}
-              height={40}
+              width={64}
+              height={64}
               priority
-              className="h-9 w-9 md:h-10 md:w-10"
+              className="h-12 w-12 md:h-14 md:w-14"
             />
-            <span className="text-h2 font-bold ko-heading tracking-tight">
+            <span className="text-base font-semibold tracking-tight md:text-lg">
               {config.brand.name}
             </span>
           </Link>
