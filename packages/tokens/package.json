@@ -1,0 +1,23 @@
+{
+  "name": "@weflow/tokens",
+  "version": "0.0.1",
+  "private": true,
+  "description": "WEFLOW 자체 디자인 토큰 패키지 — colors, typography, spacing, radius, motion, shadow",
+  "type": "module",
+  "main": "./src/index.ts",
+  "types": "./src/index.ts",
+  "exports": {
+    ".": "./src/index.ts",
+    "./theme.css": "./src/theme.css",
+    "./motion": "./src/motion.ts",
+    "./colors": "./src/colors.ts",
+    "./typography": "./src/typography.ts"
+  },
+  "scripts": {
+    "typecheck": "tsc --noEmit",
+    "clean": "rm -rf node_modules dist .turbo"
+  },
+  "devDependencies": {
+    "typescript": "^5.7.2"
+  }
+}

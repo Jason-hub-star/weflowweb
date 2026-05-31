@@ -1,0 +1,70 @@
+{
+  "hero": {
+    "eyebrow": "OUR STORY",
+    "title": "사람이 움직이면, 기술은 따라온다",
+    "tagline": "WE = 우리·관계   FLOW = 흐름·성장",
+    "sub": "사람과 기술이 함께 흘러가며 더 좋은 방향을 만드는 회사",
+    "cover": "/assets/story/story-hero-cover.svg",
+    "coverAlt": "WEFLOW 작업실 — 사람과 기술이 흐르는 공간"
+  },
+  "naming": {
+    "eyebrow": "NAMING",
+    "title": "WEFLOW — 이름에 담은 약속",
+    "items": [
+      { "letter": "WE", "meaning": "우리, 사람, 관계, 함께하는 가치" },
+      { "letter": "FLOW", "meaning": "흐름, 성장, 연결, 앞으로 나아가는 움직임" }
+    ],
+    "summary": "단순히 개발만 하는 회사가 아니라, 기술은 뒤에서 받쳐주고 사람은 앞에서 빛나게 하는 흐름이라는 의미입니다."
+  },
+  "philosophy": {
+    "quote": "기술은 뒤에서 받쳐주고, 사람은 앞에서 빛나게 하는 흐름.",
+    "attribution": "WEFLOW Manifesto"
+  },
+  "years": [
+    {
+      "year": "2024",
+      "label": "시작",
+      "chapters": [
+        {
+          "id": "y2024-genesis",
+          "month": "출발",
+          "title": "돈도, 스펙도, 대단한 기술도 없이",
+          "body": "처음엔 돈도, 스펙도, 대단한 기술도 없었습니다. 하지만 사람과 관계, 그리고 좋은 흐름은 결국 큰 결과를 만든다고 믿었습니다.",
+          "highlight": "믿음에서 시작했습니다.",
+          "image": "/assets/story/story-2024-genesis.svg",
+          "imageAlt": "작은 작업실 책상 — 시작의 장면 (placeholder)"
+        },
+        {
+          "id": "y2024-naming",
+          "month": "이름 짓기",
+          "title": "혼자보다 함께",
+          "body": "혼자 성공하는 회사보다, 함께 흘러가며 성장하는 회사를 만들고 싶었습니다. 그래서 이름은 WEFLOW입니다.",
+          "highlight": "WE + FLOW = 함께 흐르는 회사",
+          "image": "/assets/story/story-2024-naming.svg",
+          "imageAlt": "WE와 FLOW 두 단어가 만나는 그래픽 (placeholder)"
+        }
+      ]
+    },
+    {
+      "year": "2025",
+      "label": "흐름을 만들다",
+      "chapters": [
+        {
+          "id": "y2025-flow",
+          "month": "흐름",
+          "title": "맡기고 잊을 수 있는 작업 흐름",
+          "body": "문의 → 확인 → 제작 → 검수 → 운영까지, 흐름이 끊기지 않게 한 줄로 이었습니다. 대표가 '맡기고 잊을 수 있는' 경험을 만드는 일이 가장 중요한 일이 되었습니다.",
+          "highlight": "끊김 없는 작업 흐름",
+          "image": "/assets/story/story-2025-flow.svg",
+          "imageAlt": "워크플로우 보드 (placeholder)"
+        }
+      ]
+    }
+  ],
+  "cta": {
+    "slogan": "People move. Technology follows.",
+    "sloganKo": "사람이 움직이면, 기술은 따라온다",
+    "primary": { "label": "함께 흘러가기", "href": "/contact" },
+    "secondary": { "label": "사례 보기", "href": "/cases" }
+  }
+}

@@ -1,0 +1,249 @@
+{
+  "hero": {
+    "eyebrow": "FREE DIAGNOSIS",
+    "title": "무료 진단 신청",
+    "sub": "5분이면 끝나는 15개 질문이에요. 답해주신 내용을 바탕으로 30분 안에 사이트 약점과 우선순위를 정리해 회신드려요."
+  },
+  "steps": [
+    {
+      "id": "company",
+      "stepNumber": 1,
+      "title": "회사 기본 정보",
+      "sub": "어떤 회사·브랜드인지 알려주세요.",
+      "questions": [
+        {
+          "id": "q1_company_name",
+          "type": "text",
+          "label": "회사명·브랜드명",
+          "placeholder": "예) 위플로우",
+          "required": true,
+          "maxLength": 100
+        },
+        {
+          "id": "q2_website_url",
+          "type": "url",
+          "label": "현재 웹사이트 URL (있다면)",
+          "placeholder": "https://...",
+          "required": false,
+          "maxLength": 200
+        },
+        {
+          "id": "q3_industry",
+          "type": "text",
+          "label": "업종",
+          "placeholder": "예) 화장품 / 카페 / 디자인 스튜디오",
+          "required": true,
+          "maxLength": 100
+        }
+      ]
+    },
+    {
+      "id": "goals",
+      "stepNumber": 2,
+      "title": "목표와 현재 상황",
+      "sub": "지금 어떤 부분을 개선하고 싶으신가요?",
+      "questions": [
+        {
+          "id": "q4_goals",
+          "type": "checkbox",
+          "label": "이번에 이루고 싶은 것 (복수 선택)",
+          "required": true,
+          "options": [
+            "디자인 리뉴얼 (브랜딩 강화)",
+            "전환 개선 (구매·문의 늘리기)",
+            "콘텐츠 정리 (정보 구조 개선)",
+            "쇼핑 기능 추가·강화"
+          ],
+          "allowOther": true
+        },
+        {
+          "id": "q5_pain_points",
+          "type": "checkbox",
+          "label": "현재 사이트의 아쉬운 점 (복수 선택)",
+          "required": false,
+          "options": [
+            "문의가 적음",
+            "디자인이 오래됨",
+            "모바일이 불편함",
+            "정보가 복잡함",
+            "검색 노출이 약함",
+            "직접 수정이 어려움"
+          ],
+          "allowOther": true
+        }
+      ]
+    },
+    {
+      "id": "design",
+      "stepNumber": 3,
+      "title": "분위기와 디자인 방향",
+      "sub": "원하시는 느낌을 알려주세요.",
+      "questions": [
+        {
+          "id": "q6_mood",
+          "type": "checkbox",
+          "label": "원하는 분위기 (복수 선택)",
+          "required": true,
+          "options": [
+            "밝고 친근",
+            "프리미엄·미니멀",
+            "클린·단정",
+            "20대 타깃",
+            "30~40대 타깃"
+          ],
+          "allowOther": true
+        },
+        {
+          "id": "q7_color",
+          "type": "checkbox",
+          "label": "컬러 방향 (복수 선택)",
+          "required": true,
+          "options": [
+            "기존 컬러 유지",
+            "화이트 + 포인트 1색 (미니멀)",
+            "다크톤 (블랙·차콜)",
+            "파스텔 톤",
+            "브랜드 컬러 지정 있음 (컬러코드 제공)"
+          ],
+          "allowOther": true
+        },
+        {
+          "id": "q8_hero_emphasis",
+          "type": "checkbox",
+          "label": "메인 페이지에서 가장 강조하고 싶은 것 (복수 선택)",
+          "required": true,
+          "options": [
+            "제품·서비스 구매 유도",
+            "효능·기능 정보 (신뢰)",
+            "후기·리뷰",
+            "브랜드 스토리 (철학·배경)",
+            "이벤트·프로모션"
+          ],
+          "allowOther": true
+        }
+      ]
+    },
+    {
+      "id": "pages",
+      "stepNumber": 4,
+      "title": "페이지 구성과 기능",
+      "sub": "필요한 페이지·기능을 골라주세요.",
+      "questions": [
+        {
+          "id": "q9_pages",
+          "type": "checkbox",
+          "label": "필요한 페이지 (복수 선택)",
+          "required": true,
+          "options": [
+            "홈 (메인)",
+            "브랜드 소개·스토리",
+            "제품·서비스 리스트",
+            "제품 상세",
+            "블로그·콘텐츠",
+            "후기·리뷰",
+            "공지사항",
+            "FAQ",
+            "문의·예약",
+            "가격 안내"
+          ],
+          "allowOther": true
+        },
+        {
+          "id": "q10_shop",
+          "type": "radio",
+          "label": "쇼핑 기능 필요 여부",
+          "required": true,
+          "options": [
+            "필요 없음 (정보 사이트)",
+            "구매하기 버튼만 (스마트스토어·외부 링크)",
+            "사이트 내 결제까지 (자사몰)"
+          ],
+          "allowOther": true
+        },
+        {
+          "id": "q11_reviews",
+          "type": "radio",
+          "label": "후기(리뷰) 운영 방식",
+          "required": true,
+          "options": [
+            "인스타·스마트스토어 후기 링크만",
+            "사이트 내 후기 게시판 (관리자 승인)",
+            "구매자만 리뷰 작성 (자사몰 연동)"
+          ],
+          "allowOther": true
+        }
+      ]
+    },
+    {
+      "id": "wrap",
+      "stepNumber": 5,
+      "title": "자료·일정·연락처",
+      "sub": "마지막으로 자료 준비 상태와 연락 받으실 방법을 알려주세요.",
+      "questions": [
+        {
+          "id": "q12_assets",
+          "type": "checkbox",
+          "label": "준비된 자료 (복수 선택)",
+          "required": false,
+          "options": [
+            "로고 파일",
+            "브랜드 컬러·폰트 가이드",
+            "제품·서비스 사진",
+            "상세 페이지 문구",
+            "고객 후기·시공 사례",
+            "인증서·수상 내역·언론 보도"
+          ],
+          "allowOther": true
+        },
+        {
+          "id": "q13_deadline",
+          "type": "radio",
+          "label": "희망 납기",
+          "required": true,
+          "options": [
+            "1~2주",
+            "3~4주",
+            "5~8주",
+            "협의"
+          ],
+          "allowOther": false
+        },
+        {
+          "id": "q14_conversions",
+          "type": "checkbox",
+          "label": "가장 늘리고 싶은 전환 (복수 선택)",
+          "required": true,
+          "options": [
+            "문의",
+            "전화",
+            "카카오톡 상담",
+            "예약",
+            "구매",
+            "견적 요청",
+            "회원가입"
+          ],
+          "allowOther": true
+        },
+        {
+          "id": "q15_contact",
+          "type": "contact",
+          "label": "연락처와 추가로 알려주실 점",
+          "required": true,
+          "fields": {
+            "email": { "label": "이메일", "placeholder": "you@example.com", "required": true },
+            "phone": { "label": "연락처 (선택)", "placeholder": "010-0000-0000", "required": false },
+            "memo": { "label": "더 알려주실 점 (선택)", "placeholder": "참고 사이트, 예산 범위, 특이사항 등 자유롭게 적어주세요.", "required": false }
+          }
+        }
+      ]
+    }
+  ],
+  "thankyou": {
+    "eyebrow": "SUBMITTED",
+    "title": "신청이 접수됐어요",
+    "sub": "주신 내용을 30분 안에 검토하고, 1~3시간 안에 입력하신 이메일로 회신드려요. 카카오톡으로 더 빠른 소통을 원하시면 채널을 추가해주세요.",
+    "ctas": [
+      { "label": "홈으로 돌아가기", "href": "/", "variant": "secondary" }
+    ]
+  }
+}

@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" role="img" aria-label="Placeholder — Story hero cover">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#EEF2F7" />
+      <stop offset="1" stop-color="#D9E0EA" />
+    </linearGradient>
+  </defs>
+  <rect width="1600" height="900" fill="url(#g)" />
+  <g fill="#6B7280" font-family="ui-sans-serif, system-ui, -apple-system" text-anchor="middle">
+    <text x="800" y="430" font-size="64" font-weight="800" letter-spacing="2">WEFLOW · OUR STORY</text>
+    <text x="800" y="490" font-size="26" font-weight="500" opacity="0.75">사람이 움직이면, 기술은 따라온다</text>
+    <text x="800" y="540" font-size="18" opacity="0.55">Placeholder — Unsplash 교체 권장 (warm office, korean studio, soft light)</text>
+  </g>
+</svg>

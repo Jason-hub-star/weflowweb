@@ -1,0 +1,146 @@
+version: 1
+project: weflow-web
+display_name: WEFLOW
+domain: weflowlab.kr
+preview_domain: weflow-web.vercel.app
+master_plan: /Users/family/.claude/plans/glimmering-skipping-neumann.md
+created: 2026-05-29
+
+entry:
+  - AGENTS.md
+  - CLAUDE.md
+  - HARNESS-MANIFEST.yaml
+  - README.md
+
+required_files:
+  status:
+    - docs/status/PROJECT-STATUS.md
+    - docs/status/DECISION-LOG.md
+    - docs/status/PAGE-UPGRADE-BOARD.md
+    - docs/status/MISSING-AND-UNIMPLEMENTED.md
+  ref:
+    - docs/ref/PRD.md
+    - docs/ref/ARCHITECTURE.md
+    - docs/ref/DESIGN-TOKENS.md
+    - docs/ref/COLOR-VARIANTS.md
+    - docs/ref/HERO-VARIANTS.md
+    - docs/ref/INTEGRATION-MATRIX.md
+    - docs/ref/DATA-FLOW.md
+    - docs/ref/SEO-STRATEGY.md
+    - docs/ref/CONTENT-MODEL.md
+    - docs/ref/PROJECT-PLAN.md
+  ops:
+    - docs/ops/design-system-ops.md
+    - docs/ops/seo-submission-ops.md
+    - docs/ops/deploy-ops.md
+  ai_context:
+    - ai-context/START-HERE.md
+    - ai-context/DESIGN-BRIEF.md
+    - ai-context/project-context.md
+
+required_dirs:
+  - docs/daily
+  - docs/weekly
+  - docs/archive
+  - .claude/commands
+  - .claude/automations
+  - .claude/skills
+  - templates
+  - harnesses
+  - patterns
+  - scripts
+
+skills:
+  imported_from: jason-agent-harness-template
+  list:
+    - doc-framework
+    - doc-sync
+    - project-planning
+    - design-to-code
+    - session-retro
+  custom:
+    - weflow-page
+    - weflow-component-extract
+    - weflow-doc-sync-batch
+    - weflow-file-size-guard
+    - weflow-korean-wrap-guard
+    - weflow-vercel-deploy
+
+slash_commands:
+  - doc-sync
+  - sync-design-tokens
+  - check-seo
+  - mockup-compare
+  - hero-lab-compare
+  - handoff
+
+scripts:
+  - scripts/check-weflow-harness.sh
+  - scripts/compress-daily.sh
+  - scripts/check-doc-sync.sh
+  - scripts/check-seo-manifest.sh
+  - scripts/check-design-tokens.sh
+  - scripts/check-file-size.sh
+  - scripts/check-korean-wrap.mjs
+
+implementation:
+  monorepo: pnpm + turborepo
+  app_path: apps/web
+  tokens_path: packages/tokens
+  framework: next.js@16
+  styling: tailwindcss@v4
+  language: typescript-strict
+  font:
+    sans: pretendard-variable
+    mono: geist-mono
+  motion: framer-motion + lenis
+  forms: react-hook-form + zod
+  content: next-mdx-remote + gray-matter
+
+integrations:
+  email: resend
+  storage_log: google-sheets
+  spam: vercel-botid
+  analytics:
+    - vercel-analytics
+    - vercel-speed-insights
+    - google-analytics-4
+    - google-tag-manager
+    - meta-pixel
+    - naver-wisetool
+    - kakao-pixel
+  og: vercel-og
+  search_console:
+    - google
+    - naver
+
+tier_priority:
+  - tier_0: runtime
+  - tier_1: agents_md_and_status
+  - tier_2: ref_and_ops
+  - tier_3: templates_harnesses_patterns_skills
+
+verification:
+  pre_commit:
+    - bash scripts/check-weflow-harness.sh
+    - bash scripts/check-design-tokens.sh
+    - bash scripts/check-file-size.sh
+    - pnpm check:korean-wrap
+    - pnpm typecheck
+    - pnpm lint
+  pre_release:
+    - pnpm build
+    - bash scripts/check-doc-sync.sh
+    - bash scripts/check-seo-manifest.sh
+    - lighthouse --perf 90 --a11y 95 --seo 100
+    - grep -i '병원|시술|치료|의료' --recursive apps/web/app apps/web/content
+  acceptance:
+    - 'MISSING-AND-UNIMPLEMENTED.md: 0 entries'
+    - 'all #TODO in lib/config.ts replaced with real values'
+
+forbidden:
+  - hex_color_hardcoding_outside_tokens
+  - medical_clinic_treatment_keywords_in_public_ui
+  - seo_guarantee_phrasing
+  - secrets_in_repo
+  - npm_publish_or_git_push_without_explicit_user_approval

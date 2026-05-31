@@ -1,0 +1,12 @@
+{
+  "slot": "story-hero-cover",
+  "status": "placeholder",
+  "preferredKeywords": ["warm office", "korean studio", "soft light", "morning workspace"],
+  "unsplashSearchUrl": "https://unsplash.com/s/photos/warm-office-light",
+  "unsplashId": null,
+  "photographer": null,
+  "license": "Unsplash License (free, attribution appreciated)",
+  "downloadedAt": null,
+  "dimensions": "1600x900",
+  "usage": "story hero — /story 페이지 상단 cover. 데스크탑 가로 wide."
+}

@@ -1,0 +1,57 @@
+# Dependencies
+node_modules/
+.pnpm-store/
+
+# Build outputs
+.next/
+dist/
+build/
+out/
+.turbo/
+
+# Environment
+.env
+.env.local
+.env.*.local
+
+# Logs
+*.log
+npm-debug.log*
+pnpm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.json
+.idea/
+
+# TypeScript
+*.tsbuildinfo
+
+# Test
+coverage/
+.nyc_output/
+
+# Vercel
+.vercel
+
+# Sentry
+.sentryclirc
+
+# Misc
+.cache/
+.eslintcache
+.prettiercache
+
+# Project-specific
+# Daily logs are committed (audit trail), but local screenshots/evidence dirs not
+docs/daily/*/evidence/
+
+# Playwright MCP 임시 캡처 (디버깅용, repo에 포함 X)
+.playwright-mcp/

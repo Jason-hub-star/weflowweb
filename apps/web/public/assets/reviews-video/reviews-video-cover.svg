@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" role="img" aria-label="Placeholder — 비디오 후기 cover">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#1F2937" />
+      <stop offset="1" stop-color="#4B5563" />
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="800" fill="url(#g)" />
+  <circle cx="600" cy="400" r="120" fill="#F9FAFB" opacity="0.85" />
+  <polygon points="570,340 570,460 680,400" fill="#1F2937" />
+  <g fill="#F9FAFB" font-family="ui-sans-serif, system-ui" text-anchor="middle">
+    <text x="600" y="600" font-size="32" font-weight="700">비디오 후기 곧 공개</text>
+    <text x="600" y="650" font-size="18" opacity="0.7">Placeholder — Unsplash 또는 실촬영 영상 교체</text>
+  </g>
+</svg>

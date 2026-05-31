@@ -1,0 +1,12 @@
+{
+  "slot": "reviews-video-cover",
+  "status": "placeholder",
+  "preferredKeywords": ["video play", "customer interview", "korean small business", "warm portrait"],
+  "unsplashSearchUrl": "https://unsplash.com/s/photos/customer-interview-video",
+  "unsplashId": null,
+  "photographer": null,
+  "license": "Unsplash License (free, attribution appreciated)",
+  "downloadedAt": null,
+  "dimensions": "1200x800",
+  "usage": "reviews 비디오 후기 placeholder — 모달과 카드 양쪽에서 활용"
+}

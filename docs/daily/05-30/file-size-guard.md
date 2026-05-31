@@ -1,0 +1,23 @@
+# 파일 크기 가드 + 컴포넌트 분해 — 2026-05-30
+
+- 작업: 400줄 초과 앱 코드 파일 선별 후 기능 폴더 안으로 컴포넌트화.
+- 선별:
+  - `apps/web/app/kit/page.tsx` 1285줄
+  - `apps/web/app/page.tsx` 439줄
+- 분해:
+  - `apps/web/app/kit/page.tsx` → 40줄 조립 파일
+  - `apps/web/app/kit/sections/*` → Kit 섹션/카드 그룹
+  - `apps/web/app/page.tsx` → 44줄 조립 파일
+  - `apps/web/app/_home/HomeSections.tsx` → 홈 섹션 컴포넌트
+- 가드:
+  - `.claude/skills/weflow-file-size-guard/SKILL.md`
+  - `scripts/check-file-size.sh`
+  - `HARNESS-MANIFEST.yaml`, `scripts/check-weflow-harness.sh`, `CLAUDE.md`, `package.json` 연결
+- 검증:
+  - `bash scripts/check-file-size.sh` PASS (최대 앱 코드 파일 379줄)
+  - `pnpm typecheck` PASS
+  - `pnpm lint` PASS
+  - `pnpm build` PASS (SSG 26/26)
+  - `bash scripts/check-weflow-harness.sh` PASS
+  - `bash scripts/check-doc-sync.sh` PASS
+  - `bash scripts/check-design-tokens.sh` PASS

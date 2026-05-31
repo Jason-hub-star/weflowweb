@@ -1,0 +1,378 @@
+{
+  "hero": {
+    "eyebrow": "홈페이지 · 운영 · 관리",
+    "title": "홈페이지부터 관리까지, 알아서 챙겨드립니다",
+    "sub": "필요한 것만 알려주세요. 만들고 운영까지 WEFLOW가 챙깁니다.",
+    "video": "/hero/hero-bg.mp4",
+    "poster": "/assets/weflow-blue-startup-hero.png",
+    "posterAlt": "",
+    "minHeight": "86vh",
+    "mascot": {
+      "src": "/mascot/weflow-blue-guide-floating.png",
+      "alt": "",
+      "width": 1672,
+      "height": 941,
+      "amplitude": 10,
+      "duration": 6
+    },
+    "ctas": [
+      {
+        "label": "편하게 맡기기",
+        "href": "/contact",
+        "variant": "primary",
+        "size": "lg"
+      },
+      {
+        "label": "작업 흐름 보기",
+        "href": "/services",
+        "variant": "secondary",
+        "size": "lg"
+      }
+    ],
+    "benefits": [
+      {
+        "title": "맡기면 끝",
+        "body": "구성·문구 정리"
+      },
+      {
+        "title": "데이터 전달",
+        "body": "문의·방문 리포트"
+      },
+      {
+        "title": "관리 쉬움",
+        "body": "수정·공지 케어"
+      }
+    ]
+  },
+  "story": {
+    "eyebrow": "OUR STORY",
+    "title": "사람이 움직이면, 기술은 따라온다",
+    "tagline": "WE = 우리·관계   FLOW = 흐름·성장",
+    "sub": "사람과 기술이 함께 흘러가며 더 좋은 방향을 만드는 회사",
+    "highlights": [
+      { "year": "2024", "body": "돈도, 스펙도 없이 — 사람과 흐름으로 시작했어요" },
+      { "year": "2025", "body": "맡기고 잊을 수 있는 작업 흐름을 만들었어요" },
+      { "year": "2026", "body": "다음 흐름은 함께 만들어갑니다" }
+    ],
+    "linkLabel": "전체 스토리 보기",
+    "linkHref": "/story"
+  },
+  "services": {
+    "eyebrow": "SERVICES",
+    "title": "사장님이 덜 고민하도록, 필요한 일을 묶어서 처리합니다",
+    "sub": "홈페이지를 예쁘게 만드는 것에서 끝내지 않고 문의 접수, 결과 확인, 수정 요청까지 이어지게 준비합니다.",
+    "linkHref": "/services",
+    "items": [
+      {
+        "code": "01",
+        "title": "알아서 만드는 홈페이지",
+        "body": "가진 자료를 바탕으로 구성, 문구, 화면을 보기 좋게 정리합니다."
+      },
+      {
+        "code": "02",
+        "title": "문의가 들어오게 연결",
+        "body": "전화, 상담, 예약, 채널 연결을 방문자가 헷갈리지 않게 배치합니다."
+      },
+      {
+        "code": "03",
+        "title": "결과를 한눈에 전달",
+        "body": "문의가 어디서 왔는지, 어떤 내용이 많은지 리포트로 받아볼 수 있습니다."
+      },
+      {
+        "code": "04",
+        "title": "수정·관리도 편하게",
+        "body": "공지, 배너, 후기, 문구 수정까지 운영 중 필요한 변경을 쉽게 처리합니다."
+      }
+    ]
+  },
+  "why": {
+    "eyebrow": "WHY WEFLOW",
+    "title": "외주를 맡겼는데도 내가 계속 챙겨야 하는 일을 줄입니다",
+    "items": [
+      {
+        "title": "무엇을 준비할지 알려드립니다",
+        "body": "사진, 메뉴, 가격, 후기처럼 필요한 자료를 쉬운 목록으로 정리해드립니다."
+      },
+      {
+        "title": "문구를 대신 다듬습니다",
+        "body": "전문 용어보다 고객이 바로 이해하는 말로 바꿔드립니다."
+      },
+      {
+        "title": "문의 버튼을 잘 보이게 둡니다",
+        "body": "방문자가 전화, 상담, 예약 중 원하는 행동을 바로 할 수 있게 만듭니다."
+      },
+      {
+        "title": "결과를 받아볼 수 있습니다",
+        "body": "문의 내용과 방문 흐름을 보기 쉬운 리포트로 정리합니다."
+      },
+      {
+        "title": "운영 중 수정이 쉽습니다",
+        "body": "배너, 공지, 문구 변경처럼 자주 생기는 일을 부담 없이 요청할 수 있습니다."
+      },
+      {
+        "title": "제작 후에도 챙깁니다",
+        "body": "오픈 이후 검색 등록, 문의 흐름 확인, 유지관리까지 이어서 봅니다."
+      }
+    ]
+  },
+  "mascotBreak": {
+    "eyebrow": "BUILT BY DEVELOPERS",
+    "title": "AI 자동 생성이 아니라, 실제 개발자가 직접 만들어드려요",
+    "body": "위플로우 개발팀이 디자인부터 코드까지 손으로 챙겨서 만듭니다. 같은 템플릿을 찍어내지 않고, 사장님 업종·자료·강점에 맞춰 한 사이트씩 직접 손봅니다.",
+    "mascot": {
+      "src": "/mascot/weflow-blue-developer-hero.png",
+      "alt": "",
+      "width": 1024,
+      "height": 1536,
+      "amplitude": 14,
+      "duration": 7,
+      "rotate": 5
+    }
+  },
+  "cases": {
+    "eyebrow": "PROJECT CASES",
+    "title": "업종별 홈페이지 제작 사례",
+    "linkLabel": "전체 사례 보기 →",
+    "linkHref": "/cases",
+    "background": "/assets/weflow-blue-startup-proof-board.png",
+    "items": [
+      {
+        "id": "headroom",
+        "title": "AI 업무 자동화 플랫폼 홈페이지",
+        "tag": "SaaS",
+        "metric": "핵심 문장 강화",
+        "thumbnail": "/assets/cases/weflow-case-ref-headroom.png"
+      },
+      {
+        "id": "breyta",
+        "title": "리서치 데이터 SaaS 홈페이지",
+        "tag": "SaaS",
+        "metric": "제품 화면 강조",
+        "thumbnail": "/assets/cases/weflow-case-ref-breyta.png"
+      },
+      {
+        "id": "zixflow",
+        "title": "CRM 자동화 솔루션 홈페이지",
+        "tag": "B2B",
+        "metric": "기능 구조 정리",
+        "thumbnail": "/assets/cases/weflow-case-ref-zixflow.png"
+      },
+      {
+        "id": "jive",
+        "title": "업무 협업 서비스 홈페이지",
+        "tag": "비즈니스",
+        "metric": "섹션 흐름 개선",
+        "thumbnail": "/assets/cases/weflow-case-ref-jive.png"
+      },
+      {
+        "id": "glide",
+        "title": "앱 빌더 플랫폼 홈페이지",
+        "tag": "제품",
+        "metric": "제품 가치 시각화",
+        "thumbnail": "/assets/cases/weflow-case-ref-glide.png"
+      },
+      {
+        "id": "betterlegal",
+        "title": "전문 서비스 상담 홈페이지",
+        "tag": "전문 서비스",
+        "metric": "신뢰 요소 보강",
+        "thumbnail": "/assets/cases/weflow-case-ref-betterlegal.png"
+      }
+    ]
+  },
+  "reviews": {
+    "eyebrow": "REVIEWS",
+    "title": "맡겨본 분들의 이야기",
+    "linkLabel": "전체 후기 보기 →",
+    "linkHref": "/reviews",
+    "filters": ["전체", "카페·F&B", "운동/뷰티", "전문서비스"],
+    "items": [
+      {
+        "id": 1,
+        "name": "김대표",
+        "biz": "온늘 카페",
+        "bizType": "카페·F&B",
+        "rating": 5,
+        "body": "무엇을 준비해야 하는지부터 알려줘서 편했어요. 제작이 끝난 뒤에도 문의 흐름을 볼 수 있어 좋았습니다."
+      },
+      {
+        "id": 2,
+        "name": "이실장",
+        "biz": "필라테스 스튜디오",
+        "bizType": "운동/뷰티",
+        "rating": 5,
+        "body": "상담 신청이 한곳으로 모이니까 놓치는 일이 줄었어요. 수정 요청도 말로 설명하면 정리해줘서 편했습니다."
+      },
+      {
+        "id": 3,
+        "name": "박대표",
+        "biz": "세무 사무소",
+        "bizType": "전문서비스",
+        "rating": 5,
+        "body": "전문적인 설명을 고객 눈높이에 맞게 바꿔줘서 상담 문의가 더 자연스럽게 들어왔습니다."
+      },
+      {
+        "id": "video-soon",
+        "name": "비디오 후기",
+        "biz": "곧 추가됩니다",
+        "rating": 5,
+        "body": "여러 대표님들이 직접 카메라 앞에서 들려주실 이야기를 준비하고 있어요.",
+        "comingSoon": {
+          "enabled": true,
+          "label": "비디오 후기 곧 공개",
+          "description": "촬영 준비 중"
+        }
+      }
+    ]
+  },
+  "process": {
+    "eyebrow": "이렇게 만듭니다",
+    "title": "6단계로 완성되는 사장님의 홈페이지",
+    "defaultOpenId": "p1",
+    "items": [
+      {
+        "id": "p1",
+        "step": "01",
+        "nickname": "첫 만남",
+        "title": "사장님 이야기부터 들어요",
+        "body": "어떤 손님이 오는지, 무엇을 자랑하고 싶은지 편하게 말씀해 주세요. 어려운 용어 없이 그냥 대화하듯 시작해요.",
+        "result": "정리된 한 장 메모",
+        "duration": "0.5일"
+      },
+      {
+        "id": "p2",
+        "step": "02",
+        "nickname": "구조 짜기",
+        "title": "사이트 뼈대를 같이 그려요",
+        "body": "어떤 페이지가 필요하고 어디에 무엇이 들어갈지 사장님과 의논해서 결정해요. 의견 주시면 바로 반영해드려요.",
+        "result": "한눈에 보이는 사이트 뼈대",
+        "duration": "1일"
+      },
+      {
+        "id": "p3",
+        "step": "03",
+        "nickname": "디자인 의논",
+        "title": "분위기 시안을 보여드리며 맞춰요",
+        "body": "색·글씨·이미지 시안을 먼저 보여드리고, 사장님 가게 느낌과 다른 부분이 있으면 말씀하신 대로 조정해드려요.",
+        "result": "사장님 마음에 든 디자인",
+        "duration": "1~3일"
+      },
+      {
+        "id": "p4",
+        "step": "04",
+        "nickname": "미리보기",
+        "title": "완성 전에 직접 확인하세요",
+        "body": "실제 사이트와 똑같은 미리보기를 보내드려요. 사장님이 만져보시고 바꾸고 싶은 곳을 알려주시면 그 자리에서 다듬어요.",
+        "result": "미리보기 사이트 링크",
+        "duration": "0.5일"
+      },
+      {
+        "id": "p5",
+        "step": "05",
+        "nickname": "공개",
+        "title": "사이트를 열고 첫 손님을 맞아요",
+        "body": "사이트를 공개하고 광고도 같이 켜드려요. 첫 손님이 어떻게 들어오는지 같이 보면서 흐름을 잡아요.",
+        "result": "공개된 사이트 + 광고 시작",
+        "duration": "0.5일"
+      },
+      {
+        "id": "p6",
+        "step": "06",
+        "nickname": "꾸준 관리",
+        "title": "이후에도 옆에서 같이 챙겨요",
+        "body": "매달 결과를 정리해서 알려드리고, 바꾸고 싶은 부분이 생기면 카톡 한 줄만 주시면 바로 처리해요.",
+        "result": "매달 리포트 + 관리 일정",
+        "duration": "지속"
+      }
+    ]
+  },
+  "pricing": {
+    "eyebrow": "PRICING",
+    "title": "투명한 가격",
+    "linkLabel": "전체 가격 보기 →",
+    "linkHref": "/pricing",
+    "items": [
+      {
+        "id": "start",
+        "label": "🚀 START 랜딩페이지",
+        "originalPrice": "499,000원",
+        "price": "249,000원",
+        "period": "/건",
+        "body": "광고·이벤트용 단일 페이지. 3~4일 제작.",
+        "cta": "START 견적 보기",
+        "ctaHref": "/pricing",
+        "featured": false
+      },
+      {
+        "id": "flow-care",
+        "label": "FLOW CARE",
+        "price": "189,000원",
+        "period": "/월",
+        "body": "성장형 — SNS 주 2회 + 광고 세팅 할인 + 문의 개선까지 가장 인기 플랜.",
+        "cta": "케어 플랜 보기",
+        "ctaHref": "/pricing",
+        "featured": true,
+        "badge": "CARE ⭐",
+        "billing": {
+          "monthly": "189,000원",
+          "yearly": "159,000원",
+          "yearlyHint": "연 결제 시 월 환산 (약 16% 할인)"
+        }
+      },
+      {
+        "id": "master",
+        "label": "👑 MASTER 프리미엄",
+        "originalPrice": "2,980,000원",
+        "price": "1,490,000원",
+        "period": "/건",
+        "body": "홈페이지+랜딩 풀패키지. 프리미엄 디자인 + 예약/문의 + 광고 전환 구조.",
+        "cta": "MASTER 견적 보기",
+        "ctaHref": "/pricing",
+        "featured": false
+      }
+    ]
+  },
+  "partners": {
+    "label": "함께 일한 클라이언트",
+    "speed": 28,
+    "items": [
+      {
+        "id": 1,
+        "label": "CAFE ONNEUL"
+      },
+      {
+        "id": 2,
+        "label": "STUDIO·B"
+      },
+      {
+        "id": 3,
+        "label": "PILATES+"
+      },
+      {
+        "id": 4,
+        "label": "TAX PARTNER"
+      },
+      {
+        "id": 5,
+        "label": "POINT PARK"
+      },
+      {
+        "id": 6,
+        "label": "LAON SWING"
+      }
+    ]
+  },
+  "cta": {
+    "eyebrow": "FREE DIAGNOSIS",
+    "title": "홈페이지 고민은 맡겨두고, 본업에 집중하세요",
+    "sub": "지금 가진 자료만 보내주시면 무엇을 만들 수 있는지, 무엇을 더 준비하면 좋은지 쉽게 정리해드립니다.",
+    "primary": {
+      "label": "편하게 맡기기",
+      "href": "/contact"
+    },
+    "secondary": {
+      "label": "작업 흐름 보기",
+      "href": "/services"
+    }
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "name": "weflow-web-monorepo",
+  "version": "0.0.1",
+  "private": true,
+  "description": "WEFLOW · 위플로우 공식 사이트 모노레포",
+  "packageManager": "pnpm@9.15.0",
+  "engines": {
+    "node": ">=20.0.0",
+    "pnpm": ">=9.0.0"
+  },
+  "scripts": {
+    "dev": "turbo dev",
+    "build": "turbo build",
+    "lint": "turbo lint",
+    "typecheck": "turbo typecheck",
+    "format": "prettier --write \"**/*.{ts,tsx,js,jsx,json,css,md}\" --ignore-path .gitignore",
+    "format:check": "prettier --check \"**/*.{ts,tsx,js,jsx,json,css,md}\" --ignore-path .gitignore",
+    "clean": "turbo clean && rm -rf node_modules .turbo",
+    "check:harness": "bash scripts/check-weflow-harness.sh",
+    "check:tokens": "bash scripts/check-design-tokens.sh",
+    "check:korean-wrap": "node scripts/check-korean-wrap.mjs",
+    "check:file-size": "bash scripts/check-file-size.sh",
+    "check:seo": "bash scripts/check-seo-manifest.sh",
+    "check:doc-sync": "bash scripts/check-doc-sync.sh",
+    "compress:daily": "bash scripts/compress-daily.sh"
+  },
+  "devDependencies": {
+    "prettier": "^3.3.3",
+    "prettier-plugin-tailwindcss": "^0.6.8",
+    "turbo": "^2.3.3",
+    "typescript": "^5.7.2"
+  }
+}

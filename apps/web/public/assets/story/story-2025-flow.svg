@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" role="img" aria-label="Placeholder — 2025 흐름을 만들다">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#CFFAFE" />
+      <stop offset="1" stop-color="#A5F3FC" />
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="800" fill="url(#g)" />
+  <g fill="#155E75" font-family="ui-sans-serif, system-ui" text-anchor="middle">
+    <text x="600" y="370" font-size="56" font-weight="800">2025 · 흐름</text>
+    <text x="600" y="430" font-size="22" font-weight="500" opacity="0.85">맡기고 잊을 수 있는 작업 흐름</text>
+    <text x="600" y="470" font-size="16" opacity="0.6">Placeholder — Unsplash 교체 권장 (workflow board, calm work, river)</text>
+  </g>
+</svg>

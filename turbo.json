@@ -1,0 +1,35 @@
+{
+  "$schema": "https://turbo.build/schema.json",
+  "globalDependencies": [".env"],
+  "tasks": {
+    "build": {
+      "dependsOn": ["^build"],
+      "outputs": [".next/**", "!.next/cache/**", "dist/**"],
+      "env": [
+        "NEXT_PUBLIC_*",
+        "RESEND_API_KEY",
+        "RESEND_FROM_EMAIL",
+        "OWNER_EMAIL",
+        "GOOGLE_SHEETS_ID",
+        "GOOGLE_SERVICE_ACCOUNT_JSON",
+        "GOOGLE_SITE_VERIFICATION",
+        "NAVER_SITE_VERIFICATION",
+        "VERCEL_ENV",
+        "VERCEL"
+      ]
+    },
+    "dev": {
+      "cache": false,
+      "persistent": true
+    },
+    "lint": {
+      "dependsOn": ["^build"]
+    },
+    "typecheck": {
+      "dependsOn": ["^build"]
+    },
+    "clean": {
+      "cache": false
+    }
+  }
+}
