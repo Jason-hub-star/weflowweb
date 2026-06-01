@@ -1,6 +1,6 @@
 # Architecture — WEFLOW
 
-작성: 2026-05-29 · 업데이트: 2026-05-31 · 잠금: DEC-008/009/010/013/014/015/016/017/050/051/057
+작성: 2026-05-29 · 업데이트: 2026-06-01 · 잠금: DEC-008/009/010/013/014/015/016/017/050/051/057/061
 
 ---
 
@@ -18,8 +18,8 @@
 │  Next.js 16 App Router (apps/web)                │
 │  - flat App Router 공개 라우트                     │
 │  - /hero-lab/[id], /kit 내부 라우트                │
-│  - API: /api/inquiry, /api/reservation 예정        │
-│  - Cache Components 'use cache'                  │
+│  - API: /api/diagnose, /api/reservation 예정      │
+│  - Cache Components 'use cache' + PPR             │
 └──────────────────────────────────────────────────┘
            │             │            │
            ▼             ▼            ▼
@@ -56,11 +56,11 @@ packages:
 
 | Route 그룹                                                        | 전략                                 | 이유                        |
 | ----------------------------------------------------------------- | ------------------------------------ | --------------------------- |
-| `/`, `/story`, `/services`, `/pricing`, `/cases`, `/reviews`, `/blog`, `/notice`, `/faq`, `/privacy`, `/terms` | SSG + JSON SSOT | 공개 핵심 페이지 |
-| `/cases/[id]` | SSG 동적 상세 | `cases.json` 기반 대표 컨펌용 레퍼런스 |
-| `/contact` | Server Component placeholder | 네이버 폼 임시 CTA, 자체 폼 결정 대기 |
-| `/hero-lab/[id]`, `/kit` | SSG + noindex | 내부 hero 박물관·컴포넌트 카탈로그 |
-| `/reservation`, `/landing`, `/products`, `/api/inquiry`, `/api/reservation` | 예정 | 폼/API 잔여 |
+| `/`, `/story`, `/services`, `/pricing`, `/cases`, `/reviews`, `/blog`, `/notice`, `/faq`, `/privacy`, `/terms`, `/contact/form` | Cache Components + JSON SSOT (`cacheLife('hours')`, `cacheTag('content:*')`) | 공개 핵심 페이지 |
+| `/cases/[id]` | PPR + cached JSON SSOT | `cases.json` 기반 대표 컨펌용 레퍼런스 |
+| `/contact` | Server Component CTA | 자체 진단 폼 진입 |
+| `/hero-lab/[id]`, `/kit` | 내부 noindex/PPR 또는 production 404 | hero 박물관·컴포넌트 카탈로그 |
+| `/reservation`, `/landing`, `/products`, `/api/reservation` | 예정 | 잔여 라우트/API |
 
 ---
 
@@ -78,7 +78,8 @@ apps/web/
 │   ├── blog/page.tsx
 │   ├── notice/page.tsx
 │   ├── faq/page.tsx
-│   ├── contact/page.tsx              # 임시 네이버 폼 CTA placeholder
+│   ├── contact/page.tsx              # /contact/form 진입 CTA
+│   ├── contact/form/page.tsx         # 멀티스텝 진단 폼
 │   ├── hero-lab/[id]/page.tsx
 │   ├── kit/page.tsx                  # noindex 재사용 컴포넌트 카탈로그
 │   ├── privacy/page.tsx
@@ -112,9 +113,9 @@ apps/web/
 │   │   └── terms.json
 │   └── forms/
 ├── lib/
-│   ├── resend.ts
-│   ├── sheets.ts
-│   ├── botid.ts
+│   ├── public-config.ts          # Client-safe config
+│   ├── server-config.ts          # server-only env/config
+│   ├── security/request-guards.ts # Origin/BotID/rate-limit/body guards
 │   ├── content.ts
 │   ├── seo.ts
 │   ├── analytics.ts
@@ -129,7 +130,7 @@ apps/web/
 
 ## 5. 데이터 흐름
 
-`DATA-FLOW.md` 참조. 요약: 폼 → BotID → zod → Promise.all(Resend, Sheets) → 응답.
+`DATA-FLOW.md` 참조. 요약: `/contact/form` → body size → Origin → rate limit → BotID → zod → Resend → 응답. Sheets append는 잔여 출시 게이트.
 
 ## 6. 외부 의존
 
@@ -138,12 +139,12 @@ apps/web/
 ## 7. 보안
 
 - 모든 시크릿은 `vercel env` (production / preview / development 분리)
-- API 라우트는 Node 런타임 (BotID·Sheets SDK 호환)
-- Origin 검증, 동의 미체크 시 서버에서 거부
+- `/api/diagnose`는 body size(64KB), Origin allowlist, 1분 5회 IP rate limit, production BotID 검증 후 zod/Resend 수행
+- Client Component는 `public-config.ts`, 서버 라우트/metadata는 `server-config.ts` 사용
 - CSP 기본값 + 픽셀 도메인 화이트리스트
 
 ---
 
 ## 한줄정리
 
-**Next.js 16 + pnpm 모노레포(apps/web + packages/tokens) + SSG·ISR 위주 마케팅 사이트 + 폼 API는 Node 런타임으로 Resend·Sheets·BotID를 한 번에 처리해요.**
+**Next.js 16 + pnpm 모노레포(apps/web + packages/tokens) + Cache Components/PPR 기반 마케팅 사이트 + `/api/diagnose` 보안 가드로 Resend 전송을 처리해요.**

@@ -1,13 +1,19 @@
+import type { Metadata } from 'next';
 import { PageHero } from '@/components/primitives';
-import { getTermsPage } from '@/lib/content/loaders';
+import { getCachedTermsPage } from '@/lib/content/loaders';
 import type { LegalPage } from '@/lib/content/schemas';
+
+export const metadata: Metadata = {
+  title: '이용약관',
+  description: 'WEFLOW 서비스 이용 조건과 책임 범위를 안내합니다.',
+};
 
 /**
  * `/terms` — 이용약관
  * 데이터: `apps/web/content/pages/terms.json` (DEC-050)
  */
-export default function TermsRoute() {
-  const data = getTermsPage();
+export default async function TermsRoute() {
+  const data = await getCachedTermsPage();
   return <LegalDocument data={data} />;
 }
 

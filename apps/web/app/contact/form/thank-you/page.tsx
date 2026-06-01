@@ -1,15 +1,15 @@
 import type { Metadata } from 'next';
 import { Button, PageHero, SectionBadge } from '@/components/primitives';
-import { getDiagnoseForm } from '@/lib/content/loaders';
-import { config } from '@/lib/config';
+import { getCachedDiagnoseForm } from '@/lib/content/loaders';
+import { serverConfig as config } from '@/lib/server-config';
 
 export const metadata: Metadata = {
   title: `진단 신청이 접수됐어요 — ${config.brand.name}`,
   description: '주신 내용을 30분 안에 검토하고 1~3시간 안에 이메일로 회신드려요.',
 };
 
-export default function ThankYouPage() {
-  const data = getDiagnoseForm();
+export default async function ThankYouPage() {
+  const data = await getCachedDiagnoseForm();
   return (
     <>
       <PageHero

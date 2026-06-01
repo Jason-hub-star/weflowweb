@@ -82,7 +82,7 @@ done
 
 echo ""
 echo "[scripts]"
-for s in check-weflow-harness.sh check-design-tokens.sh check-korean-wrap.mjs check-file-size.sh check-seo-manifest.sh check-doc-sync.sh compress-daily.sh; do
+for s in check-weflow-harness.sh check-design-tokens.sh check-korean-wrap.mjs check-file-size.sh check-seo-manifest.sh check-doc-sync.sh sync-frontend-kit-registry.mjs compress-daily.sh; do
   check_file "scripts/${s}"
 done
 

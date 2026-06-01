@@ -567,6 +567,22 @@
 
 ---
 
+## DEC-061: Diagnose API hardening + public/server config split + Cache Components 실제 적용
+- **Context**: Next.js 16/RSC 취약점 점검에서 `/api/diagnose`가 zod+honeypot만 가지고 있고 Origin/BotID/rate limit이 없으며, `config.ts`가 Client Component에서도 import 가능한 단일 파일이라 서버 전용 값 혼입 위험이 있었다. 문서에는 Cache Components가 잠겨 있었지만 실제 `"use cache"` 로더는 없었다.
+- **Decision**: `/api/diagnose` 앞단에 body size guard, Origin allowlist, in-memory IP rate limit, Vercel BotID 검증을 추가한다. 설정은 `public-config.ts`(Client-safe)와 `server-config.ts`(SEO/email/server env)로 분리한다. Next `cacheComponents`를 켜고 공개 JSON SSOT 로더에 cached async wrapper(`cacheLife('hours')`, `cacheTag('content:*')`)를 둔다.
+- **Rationale**: 폼 API는 출시 전 가장 큰 외부 입력 표면이다. Client bundle에 서버 전용 env가 섞일 여지를 구조적으로 줄이고, Next 16의 PPR/Cache Components 방향과 실제 코드를 맞춘다.
+- **Impact**:
+  - `botid` 의존성 추가, `withBotId(nextConfig)` + `instrumentation-client.ts` 보호 경로(`/api/diagnose` POST) 등록
+  - `lib/security/request-guards.ts` 신설: Origin 검증, 64KB body 제한, 1분 5회 rate limit, BotID 검증
+  - `lib/public-config.ts` / `lib/server-config.ts` 신설, 기존 `lib/config.ts`는 호환 re-export로 축소
+  - `CTASection`에서 불필요한 `"use client"` 제거, `Button` 내부 링크는 `next/link` 사용
+  - 주요 공개 라우트 metadata 추가
+  - Cache Components 활성화에 맞춰 `SiteFooter`의 render-time `new Date()` 제거, OG 로고는 prerender fetch 대신 local public 파일 읽기
+- **Date**: 2026-06-01
+- **Verification**: `pnpm --filter @weflow/web typecheck` PASS · `pnpm --filter @weflow/web lint` PASS · `pnpm --filter @weflow/web build` PASS(Cache Components enabled, 공개 JSON SSOT routes 1h/1d cache) · `bash scripts/check-design-tokens.sh` PASS · `bash scripts/check-seo-manifest.sh` PASS.
+
+---
+
 ## Template
 
 ```markdown

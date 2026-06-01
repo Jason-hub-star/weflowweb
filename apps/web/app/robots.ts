@@ -1,5 +1,5 @@
 import type { MetadataRoute } from 'next';
-import { config } from '@/lib/config';
+import { serverConfig as config } from '@/lib/server-config';
 
 export default function robots(): MetadataRoute.Robots {
   return {

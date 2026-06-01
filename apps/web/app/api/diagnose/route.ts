@@ -1,17 +1,33 @@
 import { NextResponse } from 'next/server';
 import { Resend } from 'resend';
-import { config } from '@/lib/config';
+import { serverConfig as config } from '@/lib/server-config';
 import { DiagnoseSubmissionSchema } from '@/lib/content/schemas';
-import { getDiagnoseForm } from '@/lib/content/loaders';
+import { getCachedDiagnoseForm } from '@/lib/content/loaders';
+import {
+  rejectBotRequest,
+  rejectInvalidOrigin,
+  rejectLargeBody,
+  rejectRateLimited,
+} from '@/lib/security/request-guards';
 import {
   getCompanyName,
   getContactEmail,
   renderDiagnoseEmailHtml,
 } from '@/lib/email/diagnose-email';
 
-export const runtime = 'nodejs';
-
 export async function POST(req: Request) {
+  const largeBody = rejectLargeBody(req);
+  if (largeBody) return largeBody;
+
+  const invalidOrigin = rejectInvalidOrigin(req);
+  if (invalidOrigin) return invalidOrigin;
+
+  const rateLimited = rejectRateLimited(req);
+  if (rateLimited) return rateLimited;
+
+  const bot = await rejectBotRequest();
+  if (bot) return bot;
+
   let json: unknown;
   try {
     json = await req.json();
@@ -28,7 +44,7 @@ export async function POST(req: Request) {
   }
 
   const { answers, otherTexts = {}, submittedAt } = parsed.data;
-  const form = getDiagnoseForm();
+  const form = await getCachedDiagnoseForm();
 
   const apiKey = process.env.RESEND_API_KEY;
   const ownerEmail = process.env.OWNER_EMAIL ?? config.email.to;

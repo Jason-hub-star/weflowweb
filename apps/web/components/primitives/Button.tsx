@@ -1,4 +1,5 @@
 import type { AnchorHTMLAttributes, ButtonHTMLAttributes, ReactNode } from 'react';
+import Link from 'next/link';
 
 type Variant = 'primary' | 'secondary' | 'ghost';
 type Size = 'sm' | 'md' | 'lg';
@@ -34,6 +35,13 @@ export function Button({
   )) {
   const cn = [BASE, VARIANT[variant], SIZE[size], className].filter(Boolean).join(' ');
   if (href !== undefined) {
+    if (href.startsWith('/') || href.startsWith('#')) {
+      return (
+        <Link href={href} className={cn} {...(rest as AnchorHTMLAttributes<HTMLAnchorElement>)}>
+          {children}
+        </Link>
+      );
+    }
     return (
       <a href={href} className={cn} {...(rest as AnchorHTMLAttributes<HTMLAnchorElement>)}>
         {children}

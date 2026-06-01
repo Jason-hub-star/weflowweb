@@ -3,7 +3,7 @@ import { Suspense } from 'react';
 import { GeistMono } from 'geist/font/mono';
 import { Analytics } from '@vercel/analytics/next';
 import { SpeedInsights } from '@vercel/speed-insights/next';
-import { config } from '@/lib/config';
+import { serverConfig as config } from '@/lib/server-config';
 import { SiteHeader } from '@/components/layout/SiteHeader';
 import { SiteFooter } from '@/components/layout/SiteFooter';
 import { FloatingCTA } from '@/components/layout/FloatingCTA';
@@ -82,7 +82,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         </Suspense>
         <StickyHeaderWatcher />
         <SiteHeader />
-        <main className="flex-1">{children}</main>
+        <main className="flex-1">
+          <Suspense fallback={null}>{children}</Suspense>
+        </main>
         <SiteFooter />
         <FloatingCTA />
         {enableVercelInsights ? (

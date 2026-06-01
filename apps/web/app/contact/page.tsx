@@ -1,7 +1,8 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { Button, PageHero, SectionBadge } from '@/components/primitives';
-import { config } from '@/lib/config';
+import { publicConfig } from '@/lib/public-config';
+import { serverConfig as config } from '@/lib/server-config';
 
 export const metadata: Metadata = {
   title: `무료 진단 신청 — ${config.brand.name}`,
@@ -34,7 +35,7 @@ export default function ContactPage() {
                 무료 진단 시작하기 →
               </Button>
               <Link
-                href={`mailto:${config.email.from}`}
+                href={`mailto:${publicConfig.contact.email}`}
                 className="border-line text-text hover:border-accent hover:text-accent-strong rounded-pill inline-flex items-center border px-6 py-3 text-base font-medium transition-colors"
               >
                 이메일로 보내기

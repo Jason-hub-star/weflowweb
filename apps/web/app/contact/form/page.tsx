@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import { PageHero, SectionBadge } from '@/components/primitives';
-import { getDiagnoseForm } from '@/lib/content/loaders';
-import { config } from '@/lib/config';
+import { getCachedDiagnoseForm } from '@/lib/content/loaders';
+import { serverConfig as config } from '@/lib/server-config';
 import { DiagnoseFormShell } from './DiagnoseFormShell';
 
 export const metadata: Metadata = {
@@ -9,8 +9,8 @@ export const metadata: Metadata = {
   description: '5분이면 끝나는 15개 질문으로 사이트 약점과 우선순위를 30분 안에 정리해드려요.',
 };
 
-export default function DiagnoseFormPage() {
-  const data = getDiagnoseForm();
+export default async function DiagnoseFormPage() {
+  const data = await getCachedDiagnoseForm();
   return (
     <>
       <PageHero

@@ -7,12 +7,11 @@ import {
   MetricBadge,
   SectionBadge,
 } from '@/components/primitives';
-import { getCasesPage } from '@/lib/content/loaders';
-
-export const dynamicParams = false;
+import { getCachedCasesPage } from '@/lib/content/loaders';
 
 export async function generateStaticParams() {
-  return getCasesPage().items.map((item) => ({ id: item.id }));
+  const data = await getCachedCasesPage();
+  return data.items.map((item) => ({ id: item.id }));
 }
 
 export async function generateMetadata({
@@ -21,7 +20,8 @@ export async function generateMetadata({
   params: Promise<{ id: string }>;
 }): Promise<Metadata> {
   const { id } = await params;
-  const item = getCasesPage().items.find((entry) => entry.id === id);
+  const data = await getCachedCasesPage();
+  const item = data.items.find((entry) => entry.id === id);
   return {
     title: item ? `${item.title} | WEFLOW 사례` : 'WEFLOW 사례',
     description: item?.summary,
@@ -34,7 +34,8 @@ export default async function CaseDetailRoute({
   params: Promise<{ id: string }>;
 }) {
   const { id } = await params;
-  const item = getCasesPage().items.find((entry) => entry.id === id);
+  const data = await getCachedCasesPage();
+  const item = data.items.find((entry) => entry.id === id);
   if (!item) notFound();
 
   return (

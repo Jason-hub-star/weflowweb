@@ -1,6 +1,7 @@
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import type { Metadata } from 'next';
+import { Suspense } from 'react';
 import { HeroSplitForm } from '@/components/hero/HeroSplitForm';
 import { HeroFullBleed } from '@/components/hero/HeroFullBleed';
 import { HeroCardMosaic } from '@/components/hero/HeroCardMosaic';
@@ -8,8 +9,6 @@ import { HeroLiveDashboard } from '@/components/hero/HeroLiveDashboard';
 import { HeroCarousel } from '@/components/hero/HeroCarousel';
 import { HeroFullBleedPlus } from '@/components/hero/HeroFullBleedPlus';
 import { heroVariantsMeta } from '@/components/hero/shared';
-
-export const dynamicParams = false;
 
 export async function generateStaticParams() {
   return heroVariantsMeta.map((v) => ({ id: v.id }));
@@ -50,7 +49,9 @@ export default async function HeroLabPage({
 
   return (
     <>
-      <Comp />
+      <Suspense fallback={null}>
+        <Comp />
+      </Suspense>
 
       {/* 라보 인디케이터 — 시안 라우트임을 알림 + 다른 안 빠른 전환 */}
       <div className="fixed bottom-24 left-1/2 z-30 max-w-[calc(100vw-24px)] -translate-x-1/2 overflow-x-auto rounded-pill border border-line bg-surface/95 px-3 py-1.5 shadow-md backdrop-blur">

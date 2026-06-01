@@ -1,15 +1,21 @@
+import type { Metadata } from 'next';
 import { Suspense } from 'react';
 import { CTASection, PageHero, SectionBadge } from '@/components/primitives';
-import { getBlogPage } from '@/lib/content/loaders';
+import { getCachedBlogPage } from '@/lib/content/loaders';
 import { BlogFilterableGrid } from './BlogFilterableGrid';
+
+export const metadata: Metadata = {
+  title: '블로그',
+  description: '홈페이지 제작, 문의 전환, 운영 관리에 필요한 WEFLOW 인사이트를 모았습니다.',
+};
 
 /**
  * `/blog` — 블로그 리스트
  * 데이터: `apps/web/content/pages/blog.json` (DEC-050)
  * 상세 글(`/blog/[slug]`)은 묶음 B-3에서 MD/MDX 본문과 함께.
  */
-export default function BlogRoute() {
-  const data = getBlogPage();
+export default async function BlogRoute() {
+  const data = await getCachedBlogPage();
 
   return (
     <>

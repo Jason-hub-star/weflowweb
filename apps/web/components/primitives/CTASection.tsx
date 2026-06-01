@@ -1,8 +1,5 @@
-'use client';
-
 import type { ReactNode } from 'react';
 import { Button } from './Button';
-import { MagneticButton } from '@/components/motion';
 
 export function CTASection({
   eyebrow,
@@ -26,11 +23,9 @@ export function CTASection({
         {(primary || secondary) && (
           <div className="mt-9 flex flex-wrap justify-center gap-3">
             {primary ? (
-              <MagneticButton strength={12} radius={140}>
-                <Button href={primary.href} size="lg">
-                  {primary.label} →
-                </Button>
-              </MagneticButton>
+              <Button href={primary.href} size="lg">
+                {primary.label} →
+              </Button>
             ) : null}
             {secondary ? (
               <Button href={secondary.href} variant="secondary" size="lg">

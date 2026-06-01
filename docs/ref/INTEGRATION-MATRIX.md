@@ -1,8 +1,8 @@
 # Integration Matrix — WEFLOW
 
-> 외부 서비스 한 곳 매트릭스. 모든 ID·키는 `apps/web/lib/config.ts` + `vercel env`.
+> 외부 서비스 한 곳 매트릭스. 공개 설정은 `apps/web/lib/public-config.ts`, 서버 설정/시크릿은 `apps/web/lib/server-config.ts` + `vercel env`.
 
-작성: 2026-05-29 · 잠금: DEC-013/014/015/021/022/024
+작성: 2026-05-29 · 업데이트: 2026-06-01 · 잠금: DEC-013/014/015/021/022/024/061
 
 ---
 
@@ -12,7 +12,7 @@
 |---|---|---|---|---|
 | Resend | 폼 제출 이메일 전송 | `RESEND_API_KEY`, `RESEND_FROM_EMAIL` | `resend` | 도메인 인증 필요 |
 | Google Sheets | 문의·예약 기록 append | `GOOGLE_SHEETS_ID`, `GOOGLE_SERVICE_ACCOUNT_JSON` | `googleapis` | 서비스 계정 키 |
-| Vercel BotID | 스팸·봇 차단 | (없음, Vercel 통합) | `@vercel/botid` | Node 런타임 |
+| Vercel BotID | 스팸·봇 차단 | (없음, Vercel 통합) | `botid` | `withBotId` + `instrumentation-client.ts` + `checkBotId()` |
 | Vercel Analytics | 페이지 뷰·이벤트 | (Vercel 자동) | `@vercel/analytics` | 1줄 |
 | Vercel Speed Insights | Core Web Vitals | (Vercel 자동) | `@vercel/speed-insights` | 1줄 |
 | Vercel OG | 동적 OG 이미지 | (없음) | `@vercel/og` | layout/opengraph-image.tsx |
@@ -42,10 +42,14 @@
 
 ---
 
-## 4. `apps/web/lib/config.ts` 형태
+## 4. Config 분리
+
+- `apps/web/lib/public-config.ts` — Client Component import 허용. 브랜드, 사이트 URL, 공개 연락처, `NEXT_PUBLIC_*` 값만 포함.
+- `apps/web/lib/server-config.ts` — Server Component, route handler, metadata, robots/sitemap/OG 전용. `GOOGLE_SITE_VERIFICATION`, `NAVER_SITE_VERIFICATION`, `RESEND_FROM_EMAIL`, `OWNER_EMAIL` 포함.
+- `apps/web/lib/config.ts` — 과거 import 호환용 re-export. 신규 코드는 직접 public/server config를 고른다.
 
 ```ts
-export const config = {
+export const publicConfig = {
   brand: {
     name: 'WEFLOW',
     slogan: '문의로 이어지는 홈페이지를 만듭니다',
@@ -72,10 +76,12 @@ export const config = {
     naver: process.env.NEXT_PUBLIC_NAVER_WISETOOL_ID,
     kakao: process.env.NEXT_PUBLIC_KAKAO_PIXEL_ID,
   },
-  seo: {
-    googleVerification: process.env.GOOGLE_SITE_VERIFICATION,
-    naverVerification: process.env.NAVER_SITE_VERIFICATION,
-  },
+} as const;
+
+export const serverConfig = {
+  ...publicConfig,
+  seo: { googleVerification, naverVerification },
+  email: { from, to },
 } as const;
 ```
 
@@ -92,4 +98,4 @@ export const config = {
 
 ## 한줄정리
 
-**1차 13종 통합 + placeholder 2종, 2차 4종. 모든 ID는 config.ts에 모이고 vercel env로 주입돼요.**
+**1차 13종 통합 + placeholder 2종, 2차 4종. 공개 값은 public-config, 서버 전용 값은 server-config와 vercel env로 분리해요.**

@@ -1,6 +1,7 @@
-/* eslint-disable @next/next/no-img-element -- next/og는 서버에서 PNG로 직접 출력하므로 next/image 사용 불가 */
 import { ImageResponse } from 'next/og';
-import { config } from '@/lib/config';
+import { readFile } from 'node:fs/promises';
+import { join } from 'node:path';
+import { serverConfig as config } from '@/lib/server-config';
 
 export const size = {
   width: 1200,
@@ -21,18 +22,13 @@ const TOKEN = {
 
 /**
  * 로고 PNG를 base64로 인라인.
- * Vercel/local 어디서 빌드되든 fetch 가능하도록 baseUrl 우선순위 처리.
+ * Vercel/local 어디서 빌드되든 prerender fetch 없이 로컬 public 파일을 읽는다.
  * 실패 시 텍스트 "W" 배지로 fallback.
  */
 async function loadLogoDataUrl(): Promise<string | null> {
   try {
-    const baseUrl = process.env.VERCEL_URL
-      ? `https://${process.env.VERCEL_URL}`
-      : config.site.url;
-    const res = await fetch(new URL('/logo/weflow-logo_icon.png', baseUrl));
-    if (!res.ok) return null;
-    const buf = await res.arrayBuffer();
-    return `data:image/png;base64,${Buffer.from(buf).toString('base64')}`;
+    const file = await readFile(join(process.cwd(), 'public/logo/weflow-logo_icon.png'));
+    return `data:image/png;base64,${file.toString('base64')}`;
   } catch {
     return null;
   }

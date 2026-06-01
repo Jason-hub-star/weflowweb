@@ -82,6 +82,7 @@ scripts:
   - scripts/check-design-tokens.sh
   - scripts/check-file-size.sh
   - scripts/check-korean-wrap.mjs
+  - scripts/sync-frontend-kit-registry.mjs
 
 implementation:
   monorepo: pnpm + turborepo
@@ -132,6 +133,7 @@ verification:
     - pnpm build
     - bash scripts/check-doc-sync.sh
     - bash scripts/check-seo-manifest.sh
+    - pnpm check:frontend-kit
     - lighthouse --perf 90 --a11y 95 --seo 100
     - grep -i '병원|시술|치료|의료' --recursive apps/web/app apps/web/content
   acceptance:

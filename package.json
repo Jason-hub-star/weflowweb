@@ -22,7 +22,14 @@
     "check:file-size": "bash scripts/check-file-size.sh",
     "check:seo": "bash scripts/check-seo-manifest.sh",
     "check:doc-sync": "bash scripts/check-doc-sync.sh",
+    "sync:frontend-kit": "node scripts/sync-frontend-kit-registry.mjs",
+    "check:frontend-kit": "node scripts/sync-frontend-kit-registry.mjs --check",
     "compress:daily": "bash scripts/compress-daily.sh"
+  },
+  "pnpm": {
+    "overrides": {
+      "postcss": "8.5.15"
+    }
   },
   "devDependencies": {
     "prettier": "^3.3.3",

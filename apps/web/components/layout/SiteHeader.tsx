@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { useState } from 'react';
-import { config } from '@/lib/config';
+import { publicConfig as config } from '@/lib/public-config';
 import { MobileDrawer } from './MobileDrawer';
 
 const NAV = [

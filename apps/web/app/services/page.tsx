@@ -1,16 +1,22 @@
+import type { Metadata } from 'next';
 import { CTASection, FaqAccordion, PageHero } from '@/components/primitives';
-import { getServicesPage } from '@/lib/content/loaders';
+import { getCachedServicesPage } from '@/lib/content/loaders';
 import type { ServicesPage } from '@/lib/content/schemas';
 import { ServicesShowcase } from './ServicesShowcase';
 import { ServicesFlow } from './ServicesFlow';
+
+export const metadata: Metadata = {
+  title: '서비스',
+  description: '홈페이지 제작, 문의 연결, 운영 케어, 리포트까지 WEFLOW가 업종에 맞게 정리합니다.',
+};
 
 /**
  * `/services` — 서비스 소개 (시네마틱 풀)
  * - ServicesShowcase: StickyStackCards + Tilt + Spotlight + features stagger
  * - ServicesFlow: 4단계 Process Flow Diagram (build → ads → ops → admin)
  */
-export default function ServicesPage() {
-  const data = getServicesPage();
+export default async function ServicesPage() {
+  const data = await getCachedServicesPage();
 
   return (
     <>

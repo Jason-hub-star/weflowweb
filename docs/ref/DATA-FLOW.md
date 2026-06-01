@@ -1,40 +1,31 @@
 # Data Flow — WEFLOW
 
 > 폼 제출이 어떻게 외부로 이어지는지의 단일 출처.  
-> 모든 API 라우트는 Node 런타임 (BotID·Sheets SDK 호환).
+> API 라우트는 App Router 기본 Node 실행 환경을 기준으로 작성한다. `cacheComponents` 사용 시 route segment `runtime` export는 두지 않는다.
 
-작성: 2026-05-29 · 잠금: DEC-013/014/015
+작성: 2026-05-29 · 업데이트: 2026-06-01 · 잠금: DEC-013/014/015/058/061
 
 ---
 
-## 1. 무료진단 폼 (`/contact` / `/landing` / `hero-lab/A`)
+## 1. 무료진단 폼 (`/contact/form`)
 
 ```
 ┌───────── 클라이언트 ─────────┐
-│ react-hook-form + zod resolver  │
-│ Vercel BotID 토큰 발급           │
-│ submit → POST /api/inquiry      │
+│ localStorage draft + client validation │
+│ BotID client instrumentation           │
+│ submit → POST /api/diagnose            │
 └───────────────────────────────┘
-              │ JSON { name, phone, type, industry?, note?, consent, botid_token }
+              │ JSON { answers, otherTexts, honeypot, submittedAt }
               ▼
-┌───────── /api/inquiry (Node) ─────────────────────┐
-│ 1. BotID 검증 (실패 → 400)                            │
-│ 2. zod 서버 재검증 (필드 누락/타입 오류 → 400)          │
-│ 3. consent === true 검증 (false → 400)              │
-│ 4. Promise.all([                                    │
-│      resend.emails.send({                            │
-│        to: env.OWNER_EMAIL,                          │
-│        subject: '[WEFLOW 무료진단] ...',              │
-│        react: InquiryEmailTemplate(payload)          │
-│      }),                                             │
-│      sheets.append({                                 │
-│        spreadsheetId: env.GOOGLE_SHEETS_ID,          │
-│        range: 'inquiries!A:Z',                       │
-│        row: [now, name, phone, type, ...]            │
-│      })                                              │
-│    ])                                                │
-│ 5. 분석 이벤트 (서버사이드 GA Measurement Protocol)    │
-│ 6. 응답 200 { ok: true, id }                         │
+┌───────── /api/diagnose (Node) ─────────────────────┐
+│ 1. content-length 64KB 초과 거부 (413)               │
+│ 2. Origin allowlist 검증 (실패 → 403)                 │
+│ 3. IP 기준 1분 5회 rate limit (초과 → 429)            │
+│ 4. production BotID 검증 (bot/실패 → 403/503)        │
+│ 5. zod 서버 재검증 + honeypot 검증 (실패 → 400)       │
+│ 6. Resend 이메일 발송                                │
+│ 7. 키 미설정 개발 환경은 dryrun 200                  │
+│ 8. 응답 200 { ok: true }                             │
 └──────────────────────────────────────────────────────┘
               │
               ▼
@@ -48,8 +39,9 @@
 
 ### 에러 처리
 - 400 (validation) → 인라인 에러
-- 429 (rate limit, 추후) → "잠시 후 다시"
-- 500 (외부 실패) → "잠시 후 다시" + Resend 실패는 시트만 성공해도 200 (이메일 재시도 큐로 옮길지는 2차)
+- 429 (rate limit) → "잠시 후 다시"
+- 502 (Resend 실패) / 500 (예상 밖 오류) → "잠시 후 다시"
+- Google Sheets append는 DEC-014 유지, 아직 출시 전 잔여 게이트
 
 ---
 
@@ -78,6 +70,7 @@ const reservationSchema = inquirySchema.extend({
 RESEND_API_KEY=
 RESEND_FROM_EMAIL=hello@weflowlab.kr
 OWNER_EMAIL=주인님메일
+NEXT_PUBLIC_CONTACT_EMAIL=hello@weflowlab.kr
 GOOGLE_SHEETS_ID=
 GOOGLE_SERVICE_ACCOUNT_JSON=base64encoded
 NEXT_PUBLIC_GA_MEASUREMENT_ID=
@@ -107,14 +100,13 @@ NAVER_SITE_VERIFICATION=
 
 ## 5. 보안 체크리스트
 
-- [ ] Node 런타임 명시 (`export const runtime = 'nodejs'`)
-- [ ] CORS — 자체 도메인만 (필요 시 미들웨어)
-- [ ] BotID 토큰 검증 통과 후에만 외부 호출
-- [ ] zod 서버 사이드 재검증
-- [ ] 개인정보 동의 미체크 시 거부
+- [x] Body size guard (64KB)
+- [x] Origin allowlist — 자체 도메인/preview/local only
+- [x] In-memory IP rate limit (1분 5회)
+- [x] BotID 검증 통과 후에만 외부 호출 (production)
+- [x] zod 서버 사이드 재검증 + honeypot
 - [ ] Sheets 서비스 계정 권한 = "편집자" 시트 단위
 - [ ] Resend From은 인증된 도메인만
-- [ ] Rate limit (2차에 `upstash/ratelimit`)
 - [ ] 로그에 전화번호·이메일 마스킹
 
 ---
@@ -128,4 +120,4 @@ NAVER_SITE_VERIFICATION=
 
 ## 한줄정리
 
-**무료진단·예약 모두 react-hook-form+zod → BotID → Resend+Sheets 병렬 → 응답 200까지 한 흐름. 모든 시크릿은 vercel env.**
+**무료진단은 `/api/diagnose`에서 size·Origin·rate limit·BotID·zod를 통과한 뒤 Resend로 전송한다. Sheets append와 예약 API는 출시 전 잔여 게이트다.**

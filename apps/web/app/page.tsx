@@ -1,6 +1,6 @@
 import { CTASection } from '@/components/primitives';
 import { SiteBuildStoryboard } from '@/components/motion';
-import { getHomePage } from '@/lib/content/loaders';
+import { getCachedHomePage } from '@/lib/content/loaders';
 import {
   HomeCases,
   HomeHero,
@@ -16,8 +16,8 @@ import {
  * 카피·배열 수정: `apps/web/content/pages/home.json`.
  * DEC-052: 사이트 6단계는 SiteBuildStoryboard(톱니바퀴)에서 home.process SSOT로 통합 렌더.
  */
-export default function HomePage() {
-  const home = getHomePage();
+export default async function HomePage() {
+  const home = await getCachedHomePage();
 
   return (
     <>

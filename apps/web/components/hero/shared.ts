@@ -1,4 +1,4 @@
-import { config } from '@/lib/config';
+import { publicConfig as config } from '@/lib/public-config';
 
 /**
  * Hero 5안 공통 카피·벤핏·자산.

@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
-import { config } from '@/lib/config';
-import { getStoryPage } from '@/lib/content/loaders';
+import { serverConfig as config } from '@/lib/server-config';
+import { getCachedStoryPage } from '@/lib/content/loaders';
 import { StorySections } from './StorySections';
 
 export const metadata: Metadata = {
@@ -15,7 +15,7 @@ export const metadata: Metadata = {
   },
 };
 
-export default function StoryPage() {
-  const story = getStoryPage();
+export default async function StoryPage() {
+  const story = await getCachedStoryPage();
   return <StorySections data={story} />;
 }

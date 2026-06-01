@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import { useState } from 'react';
-import { config } from '@/lib/config';
+import { publicConfig as config } from '@/lib/public-config';
 
 /**
  * 우측 하단 플로팅 CTA — 푸터 연락처와 연결되는 빠른 문의 도크.

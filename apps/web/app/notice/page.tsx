@@ -1,15 +1,21 @@
+import type { Metadata } from 'next';
 import Link from 'next/link';
 import { Badge, CTASection, PageHero, SectionBadge } from '@/components/primitives';
-import { getNoticePage } from '@/lib/content/loaders';
+import { getCachedNoticePage } from '@/lib/content/loaders';
 import type { NoticePage } from '@/lib/content/schemas';
+
+export const metadata: Metadata = {
+  title: '공지사항',
+  description: 'WEFLOW 서비스 운영 소식과 업데이트 안내를 확인하세요.',
+};
 
 /**
  * `/notice` — 공지사항
  * 데이터: `apps/web/content/pages/notice.json` (DEC-050)
  * pin 공지 강조 + 일반 공지 리스트. 상세(`/notice/[slug]`)는 묶음 B-3.
  */
-export default function NoticeRoute() {
-  const data = getNoticePage();
+export default async function NoticeRoute() {
+  const data = await getCachedNoticePage();
   const pinned = data.items.filter((n) => n.pinned);
   const general = data.items.filter((n) => !n.pinned);
 

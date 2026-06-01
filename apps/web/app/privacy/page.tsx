@@ -1,13 +1,19 @@
+import type { Metadata } from 'next';
 import { PageHero } from '@/components/primitives';
-import { getPrivacyPage } from '@/lib/content/loaders';
+import { getCachedPrivacyPage } from '@/lib/content/loaders';
 import type { LegalPage } from '@/lib/content/schemas';
+
+export const metadata: Metadata = {
+  title: '개인정보 처리방침',
+  description: 'WEFLOW 개인정보 수집, 이용, 보관, 파기 기준을 안내합니다.',
+};
 
 /**
  * `/privacy` — 개인정보 처리방침
  * 데이터: `apps/web/content/pages/privacy.json` (DEC-050)
  */
-export default function PrivacyRoute() {
-  const data = getPrivacyPage();
+export default async function PrivacyRoute() {
+  const data = await getCachedPrivacyPage();
   return <LegalDocument data={data} />;
 }
 

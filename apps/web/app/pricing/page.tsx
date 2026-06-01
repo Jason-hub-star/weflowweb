@@ -1,14 +1,20 @@
+import type { Metadata } from 'next';
 import { Button, ComingSoonChip, CTASection, FaqAccordion } from '@/components/primitives';
-import { getPricingPage } from '@/lib/content/loaders';
+import { getCachedPricingPage } from '@/lib/content/loaders';
 import type { PricingPage } from '@/lib/content/schemas';
 import { PricingQuickCompare } from './PricingQuickCompare';
+
+export const metadata: Metadata = {
+  title: '가격',
+  description: '제작 플랜, 운영 케어, 광고 운영까지 WEFLOW의 홈페이지 제작 가격을 비교하세요.',
+};
 
 /**
  * `/pricing` — 가격
  * 데이터: `apps/web/content/pages/pricing.json` (DEC-050)
  */
-export default function PricingRoute() {
-  const data = getPricingPage();
+export default async function PricingRoute() {
+  const data = await getCachedPricingPage();
 
   return (
     <>

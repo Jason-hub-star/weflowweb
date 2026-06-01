@@ -1,5 +1,7 @@
 import Link from 'next/link';
-import { config } from '@/lib/config';
+import { publicConfig as config } from '@/lib/public-config';
+
+const COPYRIGHT_YEAR = 2026;
 
 /**
  * 사이트 푸터 — 24시간 문의 상담(tel:) + 4 소셜 채널 + 사업자 정보 + 법무 링크.
@@ -107,7 +109,7 @@ export function SiteFooter() {
         </div>
       </div>
       <div className="border-t border-line py-4 text-center text-small text-muted">
-        © {new Date().getFullYear()} {brand.name}. All rights reserved.
+        © {COPYRIGHT_YEAR} {brand.name}. All rights reserved.
       </div>
     </footer>
   );
